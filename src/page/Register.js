@@ -1,11 +1,10 @@
-import { Grid, Button, TextField, } from "@mui/material";
 import React, { useState } from "react";
+import { Grid, Button, TextField, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
-import Kaydol from "../api/kaydol"
+import Kaydol from "../api/kaydol";
 
 const Register = () => {
-
     const navigate = useNavigate();
 
     const [user, setUser] = useState({
@@ -18,7 +17,11 @@ const Register = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setUser({ ...user, [name]: value.charAt(0).toUpperCase() + value.slice(1).toLowerCase() });
+        if (name === 'name') {
+            setUser({ ...user, [name]: value.charAt(0).toUpperCase() + value.slice(1).toLowerCase() });
+        } else {
+            setUser({ ...user, [name]: value });
+        }
     };
 
     const handleSubmit = (e) => {
@@ -31,7 +34,7 @@ const Register = () => {
                             // Başarılı kayıt durumunda yapılacak işlemler
                             Swal.fire({
                                 title: 'Başarılı',
-                                text: 'Kayıt yapıldı. Teşekkürler. Birazdan anasayfaya yönlendirileceksiniz.',
+                                text: 'Kayıt yapıldı. Teşekkürler. Gün içersinde whatsapp üzerinden makaleler gönderilecektir.',
                                 icon: 'success',
                                 confirmButtonText: 'Tamam',
                                 cancelButtonText: 'İptal',
@@ -52,7 +55,6 @@ const Register = () => {
                                 confirmButtonText: 'Tamam'
                             });
                         });
-
                 } else {
                     alert("Bilgileri tam giriniz");
                 }
@@ -64,95 +66,88 @@ const Register = () => {
         }
     };
 
-
     return (
-        <Grid container sx={{
-            height: "100vh", display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
+        <Grid container justifyContent="center" alignItems="center" sx={{
+            height: "100vh",
+            backgroundImage: `url("https://md.teyit.org/img/akademi-uydurma-makale.png")`,
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            backgroundColor: "rgba(255, 255, 255, 0.5)", // Yarı saydam beyaz arka plan
+            backdropFilter: "blur(10px)" // Arka plana blur efekti
         }}>
-            <Grid item
-
-                style={{
-                    backgroundImage: `url(${"https://md.teyit.org/img/akademi-uydurma-makale.png"})`,
-                    backgroundSize: "cover",
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "center",
-                    width: "70vw",
-                    height: "70vh",
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    alignItems: "center"
-                }}
-            >
-                <h1>Kullanıcı Bilgileri</h1>
+            <Grid item sx={{ maxWidth: "500px", width: "100%", p: 4, mt: 4, borderRadius: "10px", boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)", backgroundColor: "white" }}>
+                <Typography variant="h4" align="center" gutterBottom>
+                    Kullanıcı Bilgileri
+                </Typography>
                 <form onSubmit={handleSubmit}>
                     <TextField
-                        label="Name"
+                        label="İsim"
                         variant="outlined"
                         name="name"
                         value={user.name}
                         onChange={handleChange}
+                        fullWidth
                         margin="normal"
-                        style={{ width: "400px" }}
-                        placeholder="İsminizi giriniz"
-
-                    // inputProps={{style:{color:"black"}}}
-                    // InputLabelProps={{style:{color:"black"}}}
+                        InputLabelProps={{ shrink: true }}
+                        required
                     />
-                    <br />
                     <TextField
-                        label="SurName"
+                        label="Soyisim"
                         variant="outlined"
                         name="surname"
                         value={user.surname}
                         onChange={handleChange}
+                        fullWidth
                         margin="normal"
-                        style={{ width: "400px" }}
-                        placeholder="Soy isminizi giriniz"
+                        InputLabelProps={{ shrink: true }}
+                        required
                     />
-                    <br />
                     <TextField
-                        label="Email"
+                        label="E-posta"
                         variant="outlined"
                         name="email"
                         value={user.email}
                         onChange={handleChange}
+                        fullWidth
                         margin="normal"
-                        style={{ width: "400px" }}
-                        placeholder="Email adresinizi giriniz"
+                        InputLabelProps={{ shrink: true }}
+                        placeholder="Örn:ornek@gmail.com"
+                        type="email"
+                        required
                     />
-                    <br />
                     <TextField
-                        label="Tel"
+                        label="Telefon"
                         variant="outlined"
                         name="tel"
                         value={user.tel}
                         onChange={handleChange}
+                        fullWidth
                         margin="normal"
-                        style={{ width: "400px" }}
+                        InputLabelProps={{ shrink: true }}
                         placeholder="0 ile başlayan telefon numaranızı giriniz"
-                        inputProps={{ pattern: "0[0-9]*" }} // 0 ile başlayan numara için desen belirliyoruz
+                        inputProps={{ pattern: "0[0-9]*" }}
+                        required
                     />
-
-                    <br />
                     <TextField
                         label="Meslek"
                         variant="outlined"
                         name="meslek"
                         value={user.meslek}
                         onChange={handleChange}
+                        fullWidth
                         margin="normal"
-                        style={{ width: "400px" }}
-                        placeholder="Mesleğinizi giriniz"
-                        type="meslek"
-
+                        InputLabelProps={{ shrink: true }}
+                        required
                     />
-
-                    <br />
-                    <Button style={{ marginLeft: "120px", marginTop: "30px", width: "200px", height: "50px", fontSize: "20px" }} variant="contained" color="primary" type="submit">
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        type="submit"
+                        fullWidth
+                        size="large"
+                        style={{ mt: "20px" }}
+                    >
                         Kayıt Ol
                     </Button>
                 </form>
@@ -160,4 +155,5 @@ const Register = () => {
         </Grid>
     );
 };
+
 export default Register;

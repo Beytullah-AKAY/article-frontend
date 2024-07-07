@@ -10,8 +10,7 @@ const Login = () => {
     const [email, setEmail] = useState("")
     const [meslek, setmeslek] = useState("")
     const navigate = useNavigate()
-    const [backcolor, setbackcolor] = useState(" ")
-    const [underline, setUnderline] = useState("underline")
+
 
     const Handlesubmit = async () => {
         if (email.includes("@") && meslek) {
@@ -54,11 +53,11 @@ const Login = () => {
                             <div className="burda" style={{ height: "100%", width: "100%" }}>
                                 <Grid container xs={12} sx={{ height: "100%", display: "flex", flexDirection: "column", }} >
                                     <Typography sx={{ fontSize: "50px", marginLeft: "30%", marginTop: "10%" }}>Giriş Yap</Typography>
-                                    <Grid item sx={{ display: "flex", gap: "10px", marginLeft: "30%" }}>
+                                    {/* <Grid item sx={{ display: "flex", gap: "10px", marginLeft: "30%" }}>
                                         <img src="https://data.pixiz.com/output/user/frame/preview/400x400/8/8/0/8/1808088_dea05.jpg" alt="yuvarlak" style={{ width: "60px", height: "60px" }} />
                                         <img src="https://data.pixiz.com/output/user/frame/preview/400x400/8/8/0/8/1808088_dea05.jpg" alt="yuvarlak" style={{ width: "60px", height: "60px" }} />
                                         <img src="https://data.pixiz.com/output/user/frame/preview/400x400/8/8/0/8/1808088_dea05.jpg" alt="yuvarlak" style={{ width: "60px", height: "60px" }} />
-                                    </Grid>
+                                    </Grid> */}
                                     <div className="burası" >
                                         <Grid xs={12} sx={{ height: "50px", width: "100%", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", marginTop: "50px", gap: "20px" }}>
                                             <TextField onChange={(event) => setEmail(event.target.value)} variant="outlined" label="Email" type="text" placeholder="Email adresinizi giriniz" sx={{ width: "450px" }} />
