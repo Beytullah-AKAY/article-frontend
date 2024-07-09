@@ -41,7 +41,7 @@ const Register = () => {
                                 showCancelButton: true
                             }).then((result) => {
                                 if (result.isConfirmed) {
-                                    navigate("/Login");
+                                    navigate("/");
                                 }
                             });
                         })
