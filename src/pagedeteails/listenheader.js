@@ -1,8 +1,9 @@
 import { Button, Grid } from "@mui/material"
-import {useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
+import React from 'react';
 
-const Listenheader = ({name}) => {
-const navigate=useNavigate()
+const Listenheader = ({ name }) => {
+    const navigate = useNavigate()
 
 
     return (
@@ -10,7 +11,7 @@ const navigate=useNavigate()
             <Grid item xs={4} sx={{ display: "flex", justifyContent: "center", backgroundColor: "white" }} >
                 <img src="https://yt3.googleusercontent.com/vTKAaPQn8kcC7AkUCh87v_8_BIYE_I6Ue3JWUQnzF1vV8eJJGBGq5lYCJyLGyyJ26jNBpbhvkp8=s900-c-k-c0x00ffffff-no-rj" alt="makaledinle" style={{ height: '130px' }} />
             </Grid>
-            <Grid item xs={2} sx={{backgroundColor:"white"}} >
+            <Grid item xs={2} sx={{ backgroundColor: "white" }} >
 
 
             </Grid><Grid item xs={2}  >
@@ -18,8 +19,8 @@ const navigate=useNavigate()
 
             </Grid>
             <Grid item xs={1.2} sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}  >
-                <Button variant="contained" color="success"  sx={{ height: "50px", backgroundColor: "purple" }} >{name}</Button>
-                <Button variant="contained" color="success" onClick={()=>navigate("/")}  sx={{ height: "50px",backgroundColor: "red" }} >Çıkış yap</Button>
+                <Button variant="contained" color="success" sx={{ height: "50px", backgroundColor: "purple" }} >{name}</Button>
+                <Button variant="contained" color="success" onClick={() => navigate("/")} sx={{ height: "50px", backgroundColor: "red" }} >Çıkış yap</Button>
 
 
             </Grid>

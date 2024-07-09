@@ -10,7 +10,6 @@ import { css } from "@emotion/react";
 import { BeatLoader } from "react-spinners";
 import RestartIcon from '@mui/icons-material/RestartAlt';
 import PauseIcon from '@mui/icons-material/Pause';
-import axios from "axios";
 
 function ToArticle() {
     const { speak, } = useTts();
@@ -27,7 +26,7 @@ function ToArticle() {
             try {
 
 
-                const article=await getArticleFromURL(searchParams.get("articleId"),searchParams.get("Identity"))
+                const article = await getArticleFromURL(searchParams.get("articleId"), searchParams.get("Identity"))
 
                 setArticleData(article.data);
                 setMetin("başlık" + article.data.updateFindMakale.header + "tarih" + article.data.updateFindMakale.date + " " + article.data.updateFindMakale.text);
